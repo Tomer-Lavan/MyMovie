@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/batman_land"
+    app:flow_horizontalGap="@dimen/cardview_compat_inset_shadow"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/image_slide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1.5"
+        android:adjustViewBounds="true"
+        android:background="@color/cardview_dark_background"
+        android:cropToPadding="false"
+        android:padding="2dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/anim_slideshow" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="2dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="#88000000"
+        app:cardCornerRadius="4dp">
+
+        <LinearLayout
+            android:id="@+id/ll_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:shadowColor="#F1EDED"
+                android:text="@string/main_title"
+                android:textColor="#E88915"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="#352C2C" />
+
+            <TextView
+                android:id="@+id/summery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:shadowColor="#F1EDED"
+                android:text="@string/movie_summery"
+                android:textColor="#E88915"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/back"
+                android:textColor="@color/btn_text_color"
+                android:onClick="showAlert"
+                android:text="@string/get_tickets" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/batIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_bat_icon" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>

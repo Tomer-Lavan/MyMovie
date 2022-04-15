@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyMovie</string>
+    <string name="title_activity_tickets_detail">tickets_detail</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="main_title">באטמן (2020)</string>
+    <string name="movie_summery">באטמן יוצא לעולם התחתון של גות\'האם סיטי כאשר רוצח סדיסט משאיר אחריו שובל של רמזים.\n \nכשהראיות מתחילות להתקרב לבית ומתברר קנה המידה של תוכניותיו של העבריין, הוא חייב לזייף מערכות יחסים חדשות, לחשוף את האשם ולהביא צדק עם ניצול לרעה של כוח ושחיתות שפקד את המטרופולין זמן רב</string>
+    <string name="get_tickets">קנה כרטיסים</string>
+    <string name="reservation_confermation">הזמנה</string>
+    <string name="go_back">חזור אחורה</string>
+    <string name="child_tickets">כרטיסי ילד</string>
+    <string name="adult_tickets">כרטיסי מבוגר</string>
+    <string name="choose_theater">תבחר אולם</string>
+    <string name="movie_date">תבחר תאריך</string>
+    <string name="reservation_details">פרטי הזמנה</string>
+    <string name="buy_tickets">קנה כרטיסים</string>
+    <string name="total_payment">סך תשלום</string>
+    <string name="final_date">תאריך</string>
+    <string name="final_theater">אולם</string>
+    <string name="confirm">אשר</string>
+    <string name="cancel">בטל</string>
+    <string name="ticket_reservation">פרטי הזמנה אחרונה</string>
+</resources>

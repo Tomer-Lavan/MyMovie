@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">MyMovie</string>
+    <string name="title_activity_tickets_detail">tickets_detail</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="main_title">The Batman (2022)</string>
+    <string name="movie_summery">Batman ventures into Gotham City\'s underworld when a sadistic killer leaves behind a trail of cryptic clues.\n \n As the evidence begins to lead closer to home and the scale of the perpetrator\'s plans become clear, he must forge new relationships, unmask the culprit and bring justice to the abuse of power and corruption that has long plagued the metropolis</string>
+    <string name="get_tickets">Get Tickets</string>
+    <string name="reservation_confermation">Reservation Confermation</string>
+    <string name="go_back">Go Back</string>
+    <string name="child_tickets">Child Tickets</string>
+    <string name="adult_tickets">Adult Tickets</string>
+    <string name="choose_theater">Choose Theater</string>
+    <string name="movie_date">Pick the movie date</string>
+    <string name="reservation_details">Reservation Details</string>
+    <string name="buy_tickets">Buy tickets</string>
+    <string name="total_payment">Total Payment</string>
+    <string name="final_date">Date</string>
+    <string name="final_theater">Theater</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="ticket_reservation">Last Ticket Reservation</string>
+</resources>
