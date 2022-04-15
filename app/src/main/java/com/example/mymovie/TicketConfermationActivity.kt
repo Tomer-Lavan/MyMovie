@@ -2,18 +2,34 @@ package com.example.mymovie
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mymovie.databinding.ActivityMainBinding
+import com.example.mymovie.databinding.ActivityTicketConfermationBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener
 
 class TicketConfermationActivity : AppCompatActivity() {
-    var dateFromPicker = "dd/mm/yyyy"
+    companion object {
+        const val PREFS = "details"
+        var dateFromPicker = "dd/mm/yyyy"
+        var theaterText = "Did not choose theater"
+        var adultTicketsText = "0"
+        var  childTicketsText = "0"
+    }
+
+    private lateinit var binding : ActivityTicketConfermationBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ticket_confermation)
+        binding = ActivityTicketConfermationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val actionBar: ActionBar? = supportActionBar
         actionBar?.hide()
@@ -23,7 +39,7 @@ class TicketConfermationActivity : AppCompatActivity() {
         //from some reason need to click twice for the datePicker show up
         val dateInput = findViewById<EditText>(R.id.date)
         dateInput.setOnClickListener {
-            var datePicker = MaterialDatePicker.Builder.datePicker()
+            val datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select date")
                 .setSelection(MaterialDatePicker.thisMonthInUtcMilliseconds())
                 .build()
@@ -41,21 +57,16 @@ class TicketConfermationActivity : AppCompatActivity() {
     //*****************************************
     // move to TicketsDetailsActivity with the user inputs
     fun ticketsDetailsActivity(view: View) {
-        var theaterText = "Did not choose theater"
-        var adultTicketsText = "0"
-        var  childTicketsText = "0"
+        getSharedPreferences(PREFS, MODE_PRIVATE).edit().apply() {
+            putString("date",  dateFromPicker)
+            if (!binding.theater.text.toString().isNullOrEmpty()) theaterText = binding.theater.text.toString()
+            putString("theater",  theaterText)
+            if (!binding.numOfAdultTickets.text.toString().isNullOrEmpty())  adultTicketsText = binding.numOfAdultTickets.text.toString()
+            putString("adultTickets", adultTicketsText)
+            if (!binding.numOfChildTickets.text.toString().isNullOrEmpty())  childTicketsText = binding.numOfChildTickets.text.toString()
+            putString("childTickets", childTicketsText)
+        }.apply()
         intent = Intent(this, TicketsDetails::class.java)
-        var dateText = dateFromPicker
-        intent.putExtra("date", dateText)
-        val theater : EditText = findViewById(R.id.theater)
-        if (!theater.text.toString().isNullOrEmpty()) theaterText = theater.text.toString()
-        intent.putExtra("theater", theaterText)
-        val adultTickets : EditText = findViewById(R.id.numOfAdultTickets)
-        if (!adultTickets.text.toString().isNullOrEmpty())  adultTicketsText = adultTickets.text.toString()
-        intent.putExtra("numOfAdultTickets", adultTicketsText)
-        val childTickets : EditText = findViewById(R.id.numOfChildTickets)
-        if (!childTickets.text.toString().isNullOrEmpty())  childTicketsText = childTickets.text.toString()
-        intent.putExtra("numOfChildTickets", childTicketsText)
         startActivity(intent)
     }
     //*****************************************

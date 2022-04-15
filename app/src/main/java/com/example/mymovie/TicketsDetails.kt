@@ -4,47 +4,44 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
+import com.example.mymovie.databinding.ActivityTicketConfermationBinding
+import com.example.mymovie.databinding.ActivityTicketsDetailsBinding
 import org.w3c.dom.Text
 
 class TicketsDetails : AppCompatActivity() {
+
+    private lateinit var binding : ActivityTicketsDetailsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tickets_details)
+        binding = ActivityTicketsDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val actionBar: ActionBar? = supportActionBar
         actionBar?.hide()
 
         //*****************************************
         // getting all the reservation user inputs and set them to text views
-        val intent = getIntent()
-        val date = intent.getStringExtra("date")
-        val dateText = findViewById<TextView>(R.id.date)
-        var text = dateText.text.toString()
-        dateText?.text = "$text: $date"
-        val theater = intent.getStringExtra("theater")
-        val theaterText = findViewById<TextView>(R.id.theater)
-        text = theaterText.text.toString()
-        theaterText?.text = "$text: $theater"
-        val numOfAdultTickets = intent.getStringExtra("numOfAdultTickets")
-        val numOfAdultTicketsText = findViewById<TextView>(R.id.numOfAdultTickets)
-        text = numOfAdultTicketsText.text.toString()
-        numOfAdultTicketsText?.text = "$text: $numOfAdultTickets"
-        val numOfChildTickets = intent.getStringExtra("numOfChildTickets")
-        val numOfChildTicketsText = findViewById<TextView>(R.id.numOfChildTickets)
-        text = numOfChildTicketsText.text.toString()
-        numOfChildTicketsText?.text = "$text: $numOfChildTickets"
-        val totalPay = findViewById<TextView>(R.id.totalPayment)
-        text = totalPay.text.toString()
-        val Apay = Integer.parseInt(numOfAdultTickets)
-        val Cpay = Integer.parseInt(numOfChildTickets)
-        val totalPayCalc = 10 * Apay + 5 * Cpay
-        totalPay?.text = "$text: $totalPayCalc$"
+        getSharedPreferences(TicketConfermationActivity.PREFS, MODE_PRIVATE).apply {
+            var adultTickets = getString("adultTickets","0")
+            var childTickets = getString("childTickets","0")
+            binding.date.setText("${binding.date.text}: ${getString("date","")}")
+            binding.theater.setText("${binding.theater.text}: ${getString("theater","")}")
+            binding.numOfAdultTickets.setText("${binding.numOfAdultTickets.text}: ${adultTickets}")
+            binding.numOfChildTickets.setText("${binding.numOfChildTickets.text}: ${childTickets}")
+            val Apay = Integer.parseInt(adultTickets)
+            val Cpay = Integer.parseInt(childTickets)
+            val totalPayCalc = 10 * Apay + 5 * Cpay
+            binding.totalPayment.setText("${binding.totalPayment.text}: $totalPayCalc$")
+        }
     }
     //*****************************************
 
